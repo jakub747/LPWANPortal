@@ -2,7 +2,12 @@ import React, { } from 'react';
 import Icon from '@mdi/react';
 import * as MaterialDesignIcons from '@mdi/js';
 
-
+/**
+ * SVG icon component 
+ * SVG source from MDI https://materialdesignicons.com
+ * @param {*} param0 
+ * @returns 
+ */
 export default function SvgIcon({ name, ...rest }) {
 
     const getIcon = (icon_name) => {

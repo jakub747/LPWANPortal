@@ -1,5 +1,10 @@
 import React, { } from 'react';
 
+/**
+ * Horizontaly scrollable component with a title
+ * @param {*} param0 
+ * @returns 
+ */
 export default function HorizontalStack({ title, className, children, ...rest }) {
 
     return <>

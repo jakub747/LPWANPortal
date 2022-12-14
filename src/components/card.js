@@ -1,5 +1,11 @@
 import React, { } from 'react';
 
+/**
+ * Card component
+ * Child component of a horizontaly srollable stack
+ * @param {*} param0 
+ * @returns 
+ */
 export default function Card({ title, message, img, className, children, ...rest }) {
 
     const styles = {}

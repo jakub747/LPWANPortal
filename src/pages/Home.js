@@ -4,9 +4,12 @@ import HorizontalStack from '../components/horizontalStack.js'
 import Card from '../components/card.js'
 import Banner from '../components/banner.js'
 
-
+/**
+ * @returns Homepage
+ */
 export default function Home() {
 
+    //test data
     const cards = [
         { title: `Card`, message: `Text text text text` },
         { title: `Card`, message: `Text text text text` },
