@@ -1,0 +1,38 @@
+body {
+    //base colors
+    --base: rgba(255, 255, 255, 1);
+    --elevated: rgba(238, 238, 239, 1);
+
+    //system accents
+    --blue: #2f7bff;
+    --green: #50c753;
+    --indigo: #5b57d9;
+    --orange: #f79400;
+    --pink: #f42952;
+    --purple: #aa53e1;
+    --red: #f43827;
+    --teal: #6dc9fc;
+    --yellow: #facb00;
+
+    //accent colors
+    --accent: rgba(0, 0, 0, 1);
+    --accent_glass: rgba(0, 0, 0, 0.25);
+
+    //text colors
+    --text_primary: rgba(0, 0, 0, 1);
+    --text_secondary: rgba(29, 29, 29, 1);
+    --text_tertiary: rgba(89, 89, 89, 1);
+    --text_quaternary: rgba(159, 159, 159, 1);
+
+    //specific colors
+    --border: rgba(0, 0, 0, 0.075);
+    --backdrop: rgba(0, 0, 0, 0.05);
+    --box_shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+    --box_shadow_light: 0 4px 14px rgba(0, 0, 0, 0.1);
+    --input_border: rgba(0, 0, 0, 0.15);
+    --scrollbar: rgba(0, 0, 0, 0.05);
+    --scrollbar_thumb: rgba(0, 0, 0, 0.1);
+
+    //animation cubic bezier
+    --cubic_bezier: cubic-bezier(0.28, 0.44, 0.07, 1.22);
+}
