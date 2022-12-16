@@ -9,8 +9,15 @@ import CustomIcon from './icon';
 function Header() {
 
     return <header>
-        <CustomIcon name={`mdiMenu`} />
-        <CustomIcon name={`mdiAccount`} />
+        <section>
+            <CustomIcon name={`mdiMenu`} />
+        </section>
+        <section>
+            
+        </section>
+        <section>
+            <CustomIcon name={`mdiAccount`} />
+        </section>
     </header>
 }
 

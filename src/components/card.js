@@ -18,7 +18,7 @@ export default function Card({ title, message, img, className, children, ...rest
         {...rest}
     >
         {title && <label>{title}</label>}
-        {message && <span>{message}</span>}
+        {message && <p>{message}</p>}
         {/* {img && <img src={img} />} */}
         {children}
     </article>
