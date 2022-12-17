@@ -3,11 +3,14 @@ import "../styles/Home.css"
 import HorizontalStack from '../components/horizontalStack.js'
 import Card from '../components/card.js'
 import Banner from '../components/banner.js'
+import Searchbar from "../components/searchbar";
 
 /**
  * @returns Homepage
  */
-export default function Home() {
+export default function Home(props) {
+
+    const { user, strings } = props;
 
     //test data
     const cards = [
@@ -23,7 +26,26 @@ export default function Home() {
     return <>
         <Header />
         <main>
-            <h1>LPWAN Portal</h1>
+            <section id="homepage_header" title={`Nabídka LPWAN sítí`}>
+                <section>
+                    <h1>resNET</h1>
+                    <h4>{strings?.motto}</h4>
+                </section>
+                <Searchbar />
+            </section>
+            {!user && <Banner id="signup_banner">
+                <p id="web_description">{strings?.web_description}</p>
+                <p>Ještě nejsi členem?</p>
+                <a className="button" href="/register">Registrovat</a>
+                <a className="button" href="/login">Přihlásit</a>
+            </Banner>}
+            {user && <section id="my_devices_banner">
+                <section>
+                    <h1>Moje zařízení</h1>
+                    <h5>Zařízení 1, zařízení 2, zařízení 3</h5>
+                </section>
+                <a className="button" href="/my_devices">Spravovat</a>
+            </section>}
             <HorizontalStack title={`Akce`}>
                 {cards?.map((item, id) => <Card title={item.title} message={item.message} />)}
             </HorizontalStack>

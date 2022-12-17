@@ -44,10 +44,11 @@ header {
     height: 48px;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
     // background: var(--darken);
     // backdrop-filter: blur(6px);
     background: var(--elevated);
-    border-bottom: 0.5px solid var(--border);
+    // border-bottom: 0.5px solid var(--border);
 
     section {
         height: 100%;
@@ -85,6 +86,15 @@ a:active.button {
     text-decoration: none;
 }
 
+a.invisible_link,
+a:link.invisible_link,
+a:visited.invisible_link,
+a:hover.invisible_link,
+a:active.invisible_link {
+    text-decoration: none;
+    color: unset;
+}
+
 .card {
     padding: 8px;
     display: flex;
@@ -106,6 +116,9 @@ a:active.button {
         label {
         }
         p {
+            margin: 0;
+            margin-top: 4px;
+            font-size: 14px;
         }
         img {
         }
@@ -160,9 +173,105 @@ a:active.button {
     }
 }
 
+#homepage_header {
+    background: var(--elevated);
+    display: flex;
+    position: sticky;
+    top: 48px;
+
+    section {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            margin: 0;
+            padding: 16px;
+            padding-bottom: 4px;
+        }
+
+        h4 {
+            margin: 0;
+            padding: 0 16px;
+            padding-bottom: 8px;
+        }
+    }
+
+    .searchbar {
+        margin: auto 16px auto auto !important;
+        flex: none;
+        input {
+            width: 8em;
+        }
+    }
+}
+
+#signup_banner {
+    margin-top: 0 !important;
+
+    p {
+        text-align: center;
+        margin: 0;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    .button {
+        margin-top: 16px;
+    }
+}
+
+#my_devices_banner {
+    display: flex;
+
+    section {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            margin: 12px 16px 4px 16px;
+        }
+
+        h5 {
+            margin: 0 0 0 16px;
+        }
+    }
+
+    a.button {
+        margin: auto;
+        margin-right: 16px;
+    }
+}
+
+#web_description {
+    text-align: left !important;
+    margin-top: 0 !important;
+}
+
+.searchbar {
+    display: flex;
+    flex: 1;
+    margin: 8px 14px 24px 14px;
+    .icon {
+        width: 20px;
+        height: 20px;
+        padding: 6px;
+        position: absolute;
+    }
+    input {
+        width: 100%;
+        padding: 4px;
+        padding-left: 28px;
+        font-size: 18px;
+        border-radius: 12px;
+        background: var(--lighten);
+        border: 1px solid var(--text_quaternary);
+    }
+}
+
 .icon {
     width: 32px;
     height: 32px;
+    z-index: 0;
     path {
         fill: var(--accent) !important;
     }
