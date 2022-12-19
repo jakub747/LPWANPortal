@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import './styles/general.scss';
-import Header from './components/header';
 import Home from './pages/Home';
-import Navbar from "./components/Navbar"
 import Login from './pages/Login';
+import Registration from './pages/Registration';
 import { LocationProvider, Router } from "@reach/router"
 import Networks from './pages/Networks';
-
 
 export default function App() {
 
@@ -38,7 +36,7 @@ export default function App() {
     <Router id='router'>
       <Home {...app_data} path='/' />
       <Login path="login" />
-      <Login path="register" />
+      <Registration path="register" />
       <Networks {...app_data} path='networks' />
       <Networks {...app_data} path='networks/:networkID' />
     </Router>
