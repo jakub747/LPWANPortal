@@ -6,12 +6,16 @@ import "../styles/FormStyle.css"
  * 
  * @returns Login page
  */
-export default function Login() {
+export default function Login({ loggedIn }) {
+
+    const logged = () => {
+        loggedIn({ username: `testuser`, name: `Test`, surname: `User` })
+    }
 
     return <>
         <Header />
         <main>
-        <h1>Přihlášení</h1>
+            <h1>Přihlášení</h1>
             <div className='main'>
                 <div className='content-box'>
                     <div>
@@ -23,7 +27,7 @@ export default function Login() {
                     <div className='input-item'>
                         <button className='black-button'>Přihlásit</button>
                     </div>
-                    <hr className='dividing-line'/>
+                    <hr className='dividing-line' />
                     <div class="signin">
                         <button type="button" class="login-with-google-btn">Sign in with Google</button>
                         <button type="button" class="login-with-apple-btn">Sign in with Apple</button>

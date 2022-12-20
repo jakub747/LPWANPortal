@@ -8,6 +8,7 @@ import Networks from './pages/Networks';
 import NetworkDetail from './pages/NetworkDetail';
 import { test_data } from './data/network_data';
 import ConnectNetwork from './pages/ConnectNetwork';
+import NotFound from './pages/NotFound';
 
 export default function App() {
 
@@ -38,11 +39,12 @@ export default function App() {
   return <LocationProvider>
     <Router id='router'>
       <Home {...app_data} path='/' />
-      <Login path="login" />
+      <Login path="login" loggedIn={loggedIn} />
       <Registration path="register" />
       <Networks {...app_data} path='networks' />
       <NetworkDetail {...app_data} path='networks/:networkID' />
       <ConnectNetwork {...app_data} path='connect/:networkID' />
+      <NotFound default/>
     </Router>
   </LocationProvider>
 }

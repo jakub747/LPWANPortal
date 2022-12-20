@@ -87,8 +87,10 @@ a.button {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 4px 8px;
-    color: var(--text_primary);
+    color: var(--base);
+    background: var(--accent) !important;
 }
+
 a:link.button,
 a:visited.button,
 a:hover.button,
@@ -332,24 +334,24 @@ a:active.invisible_link {
         display: flex;
         flex-direction: column;
 
-        // section {
-        //     div {
-        //         display: flex;
-        //         justify-content: space-around;
+        section {
+            div {
+                display: flex;
+                justify-content: space-around;
 
-        //         a.button {
-        //             flex: 1;
-        //         }
+                a.button {
+                    flex: 1;
+                }
 
-        //         a.button:first-of-type {
-        //             margin-right: 6px;
-        //         }
+                a.button:first-of-type {
+                    margin-right: 6px;
+                }
 
-        //         a.button:last-of-type {
-        //             margin-left: 6px;
-        //         }
-        //     }
-        // }
+                a.button:last-of-type {
+                    margin-left: 6px;
+                }
+            }
+        }
     }
 
     a.button {
@@ -405,5 +407,21 @@ form#device_connection {
         background: var(--elevated);
         padding: 8px;
         font-size: 18px;
+    }
+
+    input,
+    button {
+        margin-top: 12px;
+    }
+}
+
+form {
+    button {
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--accent);
+        padding: 8px;
+        font-size: 18px;
+        color: var(--base);
     }
 }

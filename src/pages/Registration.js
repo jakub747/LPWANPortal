@@ -6,12 +6,16 @@ import "../styles/FormStyle.css"
  * 
  * @returns Regstration page
  */
-export default function Regstration() {
+export default function Regstration({ loggedIn }) {
+
+    const logged = () => {
+        loggedIn({ username: `testuser`, name: `Test`, surname: `User` })
+    }
 
     return <>
         <Header />
         <main>
-        <h1>Registrace</h1>
+            <h1>Registrace</h1>
             <div className='main'>
                 <div className='content-box'>
                     <div>
@@ -32,7 +36,7 @@ export default function Regstration() {
                     <div className='input-item'>
                         <button className='black-button'>Registrovat</button>
                     </div>
-                    <hr className='dividing-line'/>
+                    <hr className='dividing-line' />
                     <div class="signin">
                         <button type="button" class="login-with-google-btn">Sign up with Google</button>
                         <button type="button" class="login-with-apple-btn">Sign up with Apple</button>
