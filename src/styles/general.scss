@@ -7,6 +7,13 @@
         // border-left: 1px solid var(--border);
         // border-right: 1px solid var(--border);
     }
+
+    footer {
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    }
 }
 
 //base elements
@@ -70,20 +77,6 @@ header {
         width: 32px;
         height: 32px;
     }
-
-    .logo {
-        display: flex;
-        align-items: center;
-
-        .icon {
-            margin: 0
-        }
-
-        p {
-            margin: 0;
-            font-size: 12px;
-        }
-    }
 }
 main {
     min-height: 100%;
@@ -116,6 +109,45 @@ main {
 }
 footer {
     min-height: 200px;
+    background: var(--elevated);
+    margin-top: 32px;
+    padding: 16px;
+
+    section {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+
+            a {
+                padding: 4px;
+                text-decoration: none;
+                color: var(--text_tertiary);
+            }
+        }
+    }
+
+    .logo {
+        padding: 80px 0;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    .icon {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        font-size: 12px;
+    }
 }
 
 //component elements
@@ -150,6 +182,14 @@ a:active.invisible_link {
     background: var(--elevated);
     border-radius: 12px;
     margin-bottom: 16px;
+
+    a.button {
+        margin: 0;
+        margin-top: 8px;
+        text-align: center;
+        color: var(--text_primary);
+        background: transparent !important;
+    }
 }
 
 .horizontal_stack {

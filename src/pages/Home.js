@@ -6,6 +6,7 @@ import Banner from '../components/banner.js'
 import Searchbar from "../components/searchbar";
 import { test_data_actions } from "../data/actions";
 import { test_data_community } from "../data/community";
+import Footer from "../components/footer";
 
 
 /**
@@ -41,17 +42,15 @@ export default function Home(props) {
                 <a className="button" href="/my_devices">Spravovat</a>
             </section>}
             <HorizontalStack title={`Akce`}>
-                {test_data_actions?.map((item, id) => <Card title={item.title} message={item.message} />)}
+                {test_data_actions?.map((item, id) => <Card user={user} title={item.title} message={item.message} />)}
             </HorizontalStack>
             <Banner title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
                 <a className="button" href="/networks">Zobrazit nabídku</a>
             </Banner>
             <HorizontalStack title={`Komunita`}>
-                {test_data_community?.map((item, id) => <Card title={item.title} message={item.message} />)}
+                {test_data_community?.map((item, id) => <Card user={user} title={item.title} message={item.message} />)}
             </HorizontalStack>
         </main>
-        <footer>
-
-        </footer>
+        <Footer />
     </>
 }

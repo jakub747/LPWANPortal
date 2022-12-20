@@ -6,7 +6,7 @@ import React, { } from 'react';
  * @param {*} param0 
  * @returns 
  */
-export default function Card({ title, message, img, className, children, ...rest }) {
+export default function Card({ user, title, message, img, className, children, ...rest }) {
 
     const styles = {}
 
@@ -21,6 +21,7 @@ export default function Card({ title, message, img, className, children, ...rest
         {message && <p>{message}</p>}
         {/* {img && <img src={img} />} */}
         {children}
+        {user && <a href='/card_detail' className='button'>Více</a>}
     </article>
 }
 

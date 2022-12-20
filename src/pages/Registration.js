@@ -1,4 +1,5 @@
 import React, { } from 'react';
+import Footer from '../components/footer';
 import Header from '../components/header';
 import "../styles/FormStyle.css"
 
@@ -50,8 +51,6 @@ export default function Regstration({ loggedIn }) {
                 </div>
             </div>
         </main>
-        <footer>
-
-        </footer>
+        <Footer />
     </>
 }

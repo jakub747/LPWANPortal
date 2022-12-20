@@ -1,5 +1,6 @@
 import { navigate } from '@reach/router';
 import React, { useEffect, useState } from 'react';
+import Footer from '../components/footer';
 import Header from '../components/header';
 import SvgIcon from '../components/icon';
 import ListItem from '../components/listItem';
@@ -40,9 +41,7 @@ export default function Networks({ networkID }) {
                 </ListItem>)}
             </VerticalStack>
         </main>
-        <footer>
-
-        </footer>
+        <Footer />
     </>
 }
 

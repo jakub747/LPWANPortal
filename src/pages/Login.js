@@ -41,9 +41,6 @@ export default function Login({ loggedIn }) {
                 </div>
             </div>
         </main>
-        <footer>
-
-        </footer>
     </>
 }
 
