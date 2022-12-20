@@ -1,7 +1,7 @@
 body {
     //base colors
     --base: rgba(255, 255, 255, 1);
-    --elevated: rgba(238, 238, 239, 1);
+    --elevated: rgb(244, 244, 247);
     --lighten: rgba(255, 255, 255, 0.1);
     --darken: rgba(0, 0, 0, 0.1);
 
@@ -18,7 +18,8 @@ body {
 
     //accent colors
     --accent: rgba(0, 0, 0, 1);
-    --accent_glass: rgba(0, 0, 0, 0.25);
+    --base_accent: rgba(0, 0, 0, 0.25);
+    --elevated_accent: rgba(0, 0, 0, 0.25);
 
     //text colors
     --text_primary: rgba(0, 0, 0, 1);

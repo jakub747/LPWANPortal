@@ -5,6 +5,9 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import { LocationProvider, Router } from "@reach/router"
 import Networks from './pages/Networks';
+import NetworkDetail from './pages/NetworkDetail';
+import { test_data } from './data/network_data';
+import ConnectNetwork from './pages/ConnectNetwork';
 
 export default function App() {
 
@@ -25,11 +28,11 @@ export default function App() {
   let app_data = {
     user: user,
     strings: {
-      
+
       motto: `Připoj to!`,
       web_description: `Naše stránka je určena pro zákazníky, kteří hledají spolehlivé a výkonné připojení pro svá IoT zařízení. Na stránkách naleznete informace o různých typech LPWAN sítí, jako je například LoRaWAN nebo Sigfox, a o možnostech připojení, které poskytovatel nabízí. K dispozici jsou také podrobné popisy jednotlivých tarifů a ceníky. Pro zákazníky je připraven také sekce s často kladenými otázkami a kontaktními údaji pro získání dalších informací nebo pomoci s nastavením připojení.`
 
-    }
+    },
   }
 
   return <LocationProvider>
@@ -38,7 +41,8 @@ export default function App() {
       <Login path="login" />
       <Registration path="register" />
       <Networks {...app_data} path='networks' />
-      <Networks {...app_data} path='networks/:networkID' />
+      <NetworkDetail {...app_data} path='networks/:networkID' />
+      <ConnectNetwork {...app_data} path='connect/:networkID' />
     </Router>
   </LocationProvider>
 }
