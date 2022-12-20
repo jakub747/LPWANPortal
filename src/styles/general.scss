@@ -1,5 +1,14 @@
 @import "./variables.scss"; //global variables
 
+@media (min-width: 800px) {
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        // border-left: 1px solid var(--border);
+        // border-right: 1px solid var(--border);
+    }
+}
+
 //base elements
 body {
     margin: 0;
@@ -48,6 +57,7 @@ header {
     // background: var(--darken);
     // backdrop-filter: blur(6px);
     background: var(--elevated);
+    border-bottom: 1px solid var(--border);
     // border-bottom: 0.5px solid var(--border);
 
     section {
@@ -60,9 +70,23 @@ header {
         width: 32px;
         height: 32px;
     }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            margin: 0
+        }
+
+        p {
+            margin: 0;
+            font-size: 12px;
+        }
+    }
 }
 main {
-    min-height: 50%;
+    min-height: 100%;
 
     h1,
     h2,
@@ -76,6 +100,18 @@ main {
     }
 
     a.button {
+    }
+
+    .banner {
+        border-radius: 12px 12px 12px 12px;
+    }
+
+    #homepage_header {
+        margin-top: 16px;
+        border-radius: 12px 12px 0 0;
+    }
+    #signup_banner {
+        border-radius: 0 0 12px 12px;
     }
 }
 footer {
@@ -113,6 +149,7 @@ a:active.invisible_link {
     flex-direction: column;
     background: var(--elevated);
     border-radius: 12px;
+    margin-bottom: 16px;
 }
 
 .horizontal_stack {
@@ -224,8 +261,8 @@ a:active.invisible_link {
 #homepage_header {
     background: var(--elevated);
     display: flex;
-    position: sticky;
-    top: 48px;
+    // position: sticky;
+    // top: 48px;
 
     section {
         display: flex;

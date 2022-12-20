@@ -34,7 +34,7 @@ export default function Networks({ networkID }) {
                         <SvgIcon name={`mdiSignal`} />
                         <section>
                             <div><label>{item.name}</label><small>{item.provider}</small></div>
-                            <div><small>{item.desc}</small><strong>{`$${item.price}`}</strong></div>
+                            <div><small>{item.desc}</small><strong>{item.currency || `$`}{item?.price}</strong></div>
                         </section>
                     </a>
                 </ListItem>)}

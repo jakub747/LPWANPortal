@@ -37,7 +37,7 @@ export default function ConnectNetwork({ networkID }) {
             <p>Pro přidání zařízení do zvolené sítě, níže vyplňte jeho identifikační číslo. Číslo naleznete na samotném zařízení. Pro více informací přejděte na stránky výrobce, nebo si přečtěte náš podrobný návod.</p>
             <article className='enhanced_card'>
                 <section>
-                    <div><strong>{data?.name}</strong><strong>CZK{data?.price}</strong></div>
+                    <div><strong>{data?.name}</strong><strong>{data.currency || `$`}{data?.price}</strong></div>
                     <p>{data.desc}</p>
                 </section>
             </article>

@@ -17,8 +17,8 @@ export default function NetworkDetail({ networkID }) {
 
     // on component mount
     useEffect(() => {
-        //fetch network details from server
-        //setData()
+        //fetch additional network details from server
+        //setData(fetchedData)
     }, [])
 
     if (!data) return null;
@@ -28,37 +28,19 @@ export default function NetworkDetail({ networkID }) {
         <main>
             <h1>{data?.name}</h1>
             <VerticalStack>
-                <strong>${data?.price}</strong>
+                <strong>{data.currency || `$`}{data?.price}</strong>
                 <p>{data?.desc}</p>
             </VerticalStack>
             <VerticalStack title={`Pokrytí`}>
-                <ListItem>
+                {data?.coverage?.map((item, id) => <ListItem key={id}>
                     <SvgIcon name={`mdiMapMarker`} />
                     <section>
                         <div>
-                            <label>Aktuální poloha</label>
-                            <strong>98%</strong>
+                            <label>{item?.location}</label>
+                            <strong>{Math.ceil(item?.percentage)}%</strong>
                         </div>
                     </section>
-                </ListItem>
-                <ListItem>
-                    <SvgIcon name={`mdiMapMarker`} />
-                    <section>
-                        <div>
-                            <label>Doma</label>
-                            <strong>100%</strong>
-                        </div>
-                    </section>
-                </ListItem>
-                <ListItem>
-                    <SvgIcon name={`mdiMapMarker`} />
-                    <section>
-                        <div>
-                            <label>Chata</label>
-                            <strong>76%</strong>
-                        </div>
-                    </section>
-                </ListItem>
+                </ListItem>)}
             </VerticalStack>
             <section id="order_section">
                 <article className='enhanced_card'>

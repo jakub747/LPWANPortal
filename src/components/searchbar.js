@@ -8,7 +8,7 @@ import SvgIcon from './icon';
  */
 export default function Searchbar({ hint, className, ...rest }) {
 
-    return <form className={`searchbar ${className}`}>
+    return <form className={`searchbar ${className}`} action="/search.php" method="get">
         <SvgIcon name="mdiMagnify"/>
         <input />
     </form >
