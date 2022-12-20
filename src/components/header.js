@@ -11,7 +11,7 @@ function Header() {
 
     return <header>
         <section>
-            <CustomIcon name={`mdiMenu`} />
+            <CustomIcon name={`mdiMenu`} /* onClick={() => toggleMenu()}  *//>
         </section>
         <section>
             <a className='logo invisible_link' href='/'>
@@ -23,7 +23,9 @@ function Header() {
             </a>
         </section>
         <section>
-            <CustomIcon name={`mdiAccount`} />
+            <a href='profile' className='invisible_link'>
+                <CustomIcon name={`mdiAccount`} />
+            </a>
         </section>
     </header>
 }
