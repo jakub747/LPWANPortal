@@ -1,11 +1,8 @@
-.main {
+.content-box {
     text-align: center;
     justify-content: center;
     display: flex;
     padding: 25px 0 25px 0;
-}
-
-.content-box {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -20,6 +17,7 @@
 }
 
 .input-box {
+    margin-bottom: 15px;
     padding-left: 35px;
     font-size: 15px;
     width: 300px;
@@ -31,12 +29,19 @@
     background-color: white;
 }
 
-.input-item {
-   padding-top: 15px; 
-}
-
 .black-button {
     width: 380px;
+    height: 50px;
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.black-button-small {
+    width: 230px;
     height: 50px;
     border-radius: 60px;
     background-color: black;
@@ -53,19 +58,6 @@
     height: 1px;
     background-color: black;
     border-style: none;
-}
-
-.footer-form {
-    padding-top: 15px;
-}
-  
-.signin {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    flex-direction: column;
 }
 
 .login-with-google-btn,
