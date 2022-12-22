@@ -16,8 +16,8 @@ export default function Regstration({ loggedIn }) {
     return <>
         <Header />
         <main>
-            <h1>Registrace</h1>
             <section className='content-box'>
+                <h1>Registrace</h1>
                 <form action="/register.php" method="post">
                     <input type="text" placeholder="Jméno" className="input-box" />
                     <input type="text" placeholder="Příjmení" className="input-box" />
@@ -30,7 +30,7 @@ export default function Regstration({ loggedIn }) {
                 <button type="button" class="login-with-google-btn">Sign up with Google</button>
                 <button type="button" class="login-with-apple-btn">Sign up with Apple</button>
                 <p>Již máte účet?</p>
-                <a href='/login'><button className='black-button-small'>Přihlásit se</button></a>
+                <a href='/login'><button className='black-button'>Přihlásit se</button></a>
             </section>
         </main>
         <Footer />
