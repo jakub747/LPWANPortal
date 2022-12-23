@@ -54,6 +54,46 @@ body,
 }
 
 //content elements
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    max-width: 50%;
+    z-index: 10;
+
+    background: var(--elevated);
+    border-right: 1px solid var(--border);
+
+    header {
+        .logo {
+        }
+    }
+
+    a {
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text_primary);
+    }
+
+    a:first-of-type {
+        margin-top: 32px;
+    }
+}
+
+#backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+}
+
 header {
     position: sticky;
     top: 0;

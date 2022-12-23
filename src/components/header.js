@@ -7,11 +7,11 @@ import CustomIcon from './icon';
  * Static header in the tom of the screen 
  * Comntains Menu icon (left), Account icon (right), logo+motto (mid)
  */
-function Header({ user, withoutAccount }) {
+function Header({ user, toggleMenu, withoutAccount }) {
 
     return <header>
         <section>
-            <CustomIcon name={`mdiMenu`} /* onClick={() => toggleMenu()}  */ />
+            <CustomIcon onClick={window?.toggleMenu} name={`mdiMenu`} /* onClick={() => toggleMenu()}  */ />
         </section>
         <section>
             <a className='logo invisible_link' href='/'>

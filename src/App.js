@@ -9,7 +9,8 @@ import NetworkDetail from './pages/NetworkDetail';
 import { test_data } from './data/network_data';
 import ConnectNetwork from './pages/ConnectNetwork';
 import NotFound from './pages/NotFound';
-import Account from './pages/NotFound copy';
+import Account from './pages/Account';
+import SvgIcon from './components/icon';
 
 let storageGetUser = () => {
   try {
@@ -23,6 +24,9 @@ export default function App() {
 
   //state hooks
   const [user, setUser] = useState(storageGetUser()) //user object
+  const [menu, setMenu] = useState(false)
+
+  window.toggleMenu = () => setMenu(!menu);
 
   /**
    * Callback after user successfuly logged/registered
@@ -46,6 +50,19 @@ export default function App() {
   }
 
   return <LocationProvider>
+    {menu && <>
+      <nav id='menu'>
+        <header>
+          <SvgIcon onClick={window.toggleMenu} name={`mdiClose`} />
+        </header>
+        <a href='/'>Hlevní stránka</a>
+        {user && <a href='/profile'>Profil</a>}
+        <a href='/networks'>LPWAN Sítě</a>
+        {user && <a href='/my_devices'>Moje zařízení</a>}
+        {user && <a href='/community'>Moje zařízení</a>}
+      </nav>
+      <div onClick={window.toggleMenu} id='backdrop'></div>
+    </>}
     <Router id='router'>
       <Home {...app_data} path='/' />
       <Login path="login" loggedIn={loggedIn} />
