@@ -7,11 +7,11 @@ import CustomIcon from './icon';
  * Static header in the tom of the screen 
  * Comntains Menu icon (left), Account icon (right), logo+motto (mid)
  */
-function Header() {
+function Header({ user, withoutAccount }) {
 
     return <header>
         <section>
-            <CustomIcon name={`mdiMenu`} /* onClick={() => toggleMenu()}  *//>
+            <CustomIcon name={`mdiMenu`} /* onClick={() => toggleMenu()}  */ />
         </section>
         <section>
             <a className='logo invisible_link' href='/'>
@@ -23,9 +23,9 @@ function Header() {
             </a>
         </section>
         <section>
-            <a href='profile' className='invisible_link'>
+            {!withoutAccount && <a href={user ? 'profile' : 'login'} className='invisible_link'>
                 <CustomIcon name={`mdiAccount`} />
-            </a>
+            </a>}
         </section>
     </header>
 }

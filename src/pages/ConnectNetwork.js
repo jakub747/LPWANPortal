@@ -12,7 +12,7 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function ConnectNetwork({ networkID }) {
+export default function ConnectNetwork({ networkID, user }) {
 
     const data = test_data.find(x => x?.id == networkID)
 
@@ -32,7 +32,7 @@ export default function ConnectNetwork({ networkID }) {
     if (!data) return null;
 
     return <>
-        <Header />
+        <Header user={user} />
         <main id='device_connection'>
             <h1>Přidání zařízení do sítě</h1>
             <p>Pro přidání zařízení do zvolené sítě, níže vyplňte jeho identifikační číslo. Číslo naleznete na samotném zařízení. Pro více informací přejděte na stránky výrobce, nebo si přečtěte náš podrobný návod.</p>

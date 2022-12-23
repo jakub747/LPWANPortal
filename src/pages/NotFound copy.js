@@ -7,14 +7,13 @@ import Header from '../components/header';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function NotFound({ networkID, user }) {
+export default function Account({ networkID, user }) {
 
     return <>
         <Header user={user} />
         <main>
-            <h1>LPWAN Portal</h1>
-            <p>Tato stránka není zahrnuta v MVP verzi našeho webu. Pro přechod do hlavního menu využijte následující odkaz.</p>
-            <a href='/' className='button'>Hlavní menu</a>
+            <h1>{user?.name} {user?.surname}</h1>
+            <a href='/' onClick={() => { localStorage.removeItem("user") }} className='button'>Odhlásit</a>
         </main>
         <Footer />
     </>

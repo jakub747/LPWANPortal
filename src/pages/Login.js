@@ -1,3 +1,4 @@
+import { navigate } from '@reach/router';
 import React, { } from 'react';
 import Header from '../components/header';
 import "../styles/FormStyle.css"
@@ -9,18 +10,24 @@ import "../styles/FormStyle.css"
 export default function Login({ loggedIn }) {
 
     const logged = () => {
-        loggedIn({ username: `testuser`, name: `Test`, surname: `User` })
+        localStorage.setItem("user", JSON.stringify({ username: `testuser`, name: `Test`, surname: `User` }))
+    }
+
+    const submit = () => {
+        //POST ajax login 
+        logged()
+        navigate("/")
     }
 
     return <>
-        <Header />
+        <Header withoutAccount />
         <main>
             <section className='content-box'>
                 <h1>Přihlášení</h1>
-                <form action="/sign_in.php" method="post">
+                <form /* action="login.php" method="post" */>
                     <input type="text" placeholder="Email" className="input-box" />
                     <input type="password" placeholder="Heslo" className="input-box" />
-                    <button className='black-button'>Přihlásit</button>
+                    <button type="submit" className='black-button' onClick={() => submit()}>Přihlásit</button>
                 </form>
                 <hr className='dividing-line' />
                 <button type="button" class="login-with-google-btn">Sign in with Google</button>

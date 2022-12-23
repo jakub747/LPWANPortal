@@ -7,6 +7,7 @@ import Searchbar from "../components/searchbar";
 import { test_data_actions } from "../data/actions";
 import { test_data_community } from "../data/community";
 import Footer from "../components/footer";
+import { useEffect } from "react";
 
 
 /**
@@ -16,10 +17,8 @@ export default function Home(props) {
 
     const { user, strings } = props;
 
-    //test data
-
     return <>
-        <Header />
+        <Header user={user} />
         <main>
             <section id="homepage_header" title={`Nabídka LPWAN sítí`}>
                 <section>

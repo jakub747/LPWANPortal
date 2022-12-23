@@ -12,7 +12,7 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function Networks({ networkID }) {
+export default function Networks({ networkID, user }) {
 
     const [data, setData] = useState(test_data)
 
@@ -25,7 +25,7 @@ export default function Networks({ networkID }) {
     // const itemClick = (item) => navigate(`/networks/${item.id}`)
 
     return <>
-        <Header />
+        <Header user={user} />
         <main>
             <h1>LPWAN Sítě</h1>
             <Searchbar />

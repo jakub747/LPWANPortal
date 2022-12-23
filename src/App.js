@@ -9,11 +9,20 @@ import NetworkDetail from './pages/NetworkDetail';
 import { test_data } from './data/network_data';
 import ConnectNetwork from './pages/ConnectNetwork';
 import NotFound from './pages/NotFound';
+import Account from './pages/NotFound copy';
+
+let storageGetUser = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user"))
+  } catch (e) {
+    return null;
+  }
+}
 
 export default function App() {
 
   //state hooks
-  const [user, setUser] = useState(null) //user object
+  const [user, setUser] = useState(storageGetUser()) //user object
 
   /**
    * Callback after user successfuly logged/registered
@@ -44,7 +53,8 @@ export default function App() {
       <Networks {...app_data} path='networks' />
       <NetworkDetail {...app_data} path='networks/:networkID' />
       <ConnectNetwork {...app_data} path='connect/:networkID' />
-      <NotFound default/>
+      <Account {...app_data} path='profile' />
+      <NotFound default />
     </Router>
   </LocationProvider>
 }

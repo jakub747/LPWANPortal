@@ -347,6 +347,10 @@ a:active.invisible_link {
 
 #my_devices_banner {
     display: flex;
+    background: var(--elevated);
+    padding-bottom: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 
     section {
         display: flex;

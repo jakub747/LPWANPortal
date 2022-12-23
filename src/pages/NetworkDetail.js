@@ -12,7 +12,7 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function NetworkDetail({ networkID }) {
+export default function NetworkDetail({ networkID, user }) {
 
     const data = test_data.find(x => x?.id == networkID)
 
@@ -25,7 +25,7 @@ export default function NetworkDetail({ networkID }) {
     if (!data) return null;
 
     return <>
-        <Header />
+        <Header user={user} />
         <main>
             <h1>{data?.name}</h1>
             <VerticalStack>
