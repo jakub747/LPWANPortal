@@ -11,10 +11,10 @@
     height: 580px;
     width: 100%;
     max-width: 450px;
-    box-shadow: 11px 12px 13px 23px rgb(207, 207, 207);
+    /* box-shadow: 11px 12px 13px 23px rgb(207, 207, 207); */
     padding-top: 30px;
     border-radius: 60px;
-    background-color: white;
+    background-color: var(--elevated);
 }
 
 .input-box {
@@ -27,14 +27,14 @@
     box-shadow: inset 0px 0px 25px 0px #888;
     border: 2px black;
     outline: none;
-    background-color: white;
+    background-color: var(--elevated);
 }
 
 .black-button {
     width: 230px;
     height: 50px;
     border-radius: 60px;
-    background-color: black;
+background-color: var(--accent);
     color: white;
     font-size: 25px;
     border: none;
@@ -46,7 +46,7 @@
     margin-bottom: 15px;
     width: 400px;
     height: 1px;
-    background-color: black;
+background-color: var(--accent);
     border-style: none;
 }
 
@@ -57,11 +57,11 @@
     border: none;
     border-radius: 3px;
     box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
-    color: #757575;
+    color: var(--text_primary) !important;
     font-size: 14px;
     font-weight: 500;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    background-color: white;
+    background-color: var(--accent) !important;
     background-repeat: no-repeat;
     background-position: 12px 11px;
     margin: 5px;

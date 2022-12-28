@@ -1,18 +1,72 @@
 @import "./variables.scss"; //global variables
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
+    header {
+        .content {
+            max-width: 900px;
+        }
+    }
+
     main {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
-        // border-left: 1px solid var(--border);
-        // border-right: 1px solid var(--border);
     }
 
     footer {
         section {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
+    }
+
+    .horizontal_stack {
+        -webkit-mask-image: linear-gradient(90deg, #000 98%, transparent);
+    }
+
+    #signup_banner {
+        display: flex;
+        flex-direction: row;
+
+        #web_description {
+            max-width: 60%;
+            margin-right: auto;
+            margin-bottom: 0;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+
+            p {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .banner {
+        border-radius: 0 !important;
+    }
+
+    #homepage_header {
+        border-radius: 0 !important;
+        img {
+            border-radius: 0 !important;
+        }
+    }
+    #signup_banner {
+        border-radius: 0 !important;
+    }
+
+    #networks_header {
+        border-radius: 0 !important;
+    }
+
+    #networks_header {
+        margin: 0 !important;
+        margin-bottom: 12px !important;
     }
 }
 
@@ -34,12 +88,19 @@ body {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 
+    background: var(--base);
+    color: var(--text_primary);
+
     overflow: hidden;
     #root {
         overflow: hidden;
         #router {
             overflow-y: scroll;
         }
+    }
+
+    input {
+        color: var(--text_primary);
     }
 }
 
@@ -98,24 +159,30 @@ header {
     position: sticky;
     top: 0;
     height: 48px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 1;
-    // background: var(--darken);
-    // backdrop-filter: blur(6px);
     background: var(--elevated);
     border-bottom: 1px solid var(--border);
-    // border-bottom: 0.5px solid var(--border);
+    display: flex;
+    z-index: 1;
 
-    section {
-        height: 100%;
-    }
+    .content {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        // background: var(--darken);
+        // backdrop-filter: blur(6px);
+        // border-bottom: 0.5px solid var(--border);
 
-    .icon {
-        margin: auto 4px;
-        padding: 8px;
-        width: 32px;
-        height: 32px;
+        section {
+            height: 100%;
+        }
+
+        .icon {
+            margin: auto 4px;
+            padding: 8px;
+            width: 32px;
+            height: 32px;
+        }
     }
 }
 main {
@@ -142,6 +209,11 @@ main {
     #homepage_header {
         margin-top: 16px;
         border-radius: 12px 12px 0 0;
+        img {
+            border-radius: 12px 12px 0 0;
+            max-height: 500px;
+            object-fit: cover;
+        }
     }
     #signup_banner {
         border-radius: 0 0 12px 12px;
@@ -216,20 +288,45 @@ a:active.invisible_link {
 }
 
 .card {
-    padding: 8px;
     display: flex;
     flex-direction: column;
     background: var(--elevated);
     border-radius: 12px;
     margin-bottom: 16px;
 
+    .card_text {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        height: 50%;
+    }
+
+    img {
+        height: 50%;
+        border-radius: 12px 12px 0 0;
+        object-fit: cover;
+    }
+
     a.button {
         margin: 0;
         margin-top: 8px;
         text-align: center;
         color: var(--text_primary);
-        background: transparent !important;
+        background: var(--accent);
+        // background: transparent !important;
     }
+}
+
+#networks_banner,
+#networks_header,
+#order_section .enhanced_card {
+    background: url("https://www.t-systems.com/resource/blob/268822/35cf5677649cc008defd008b7295d0f5/IM-t-systems-references-connectivity-data.jpg") !important;
+    object-fit: cover;
+}
+
+#networks_header {
+    padding: 128px 12px 8px 12px;
+    border-radius: 12px;
 }
 
 .horizontal_stack {
@@ -239,10 +336,11 @@ a:active.invisible_link {
     .card {
         margin-left: 16px;
         height: 200px;
-        min-width: 100px;
+        min-width: 128px;
         justify-content: flex-end;
 
         label {
+            font-weight: bold;
         }
         p {
             margin: 0;
@@ -341,9 +439,13 @@ a:active.invisible_link {
 #homepage_header {
     background: var(--elevated);
     display: flex;
+    flex-direction: column;
     // position: sticky;
     // top: 48px;
 
+    div {
+        display: flex;
+    }
     section {
         display: flex;
         flex-direction: column;
@@ -372,6 +474,13 @@ a:active.invisible_link {
 
 #signup_banner {
     margin-top: 0 !important;
+    display: flex;
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
 
     p {
         text-align: center;
@@ -540,7 +649,7 @@ form {
     button {
         border-radius: 12px;
         border: 1px solid var(--border);
-        background: var(--accent);
+        background: var(--accent) !important;
         padding: 8px;
         font-size: 18px;
         color: var(--base);

@@ -27,7 +27,7 @@ export default function Networks({ networkID, user }) {
     return <>
         <Header user={user} />
         <main>
-            <h1>LPWAN Sítě</h1>
+            <h1 id='networks_header'>LPWAN Sítě</h1>
             <Searchbar />
             <VerticalStack>
                 {data?.map((item, id) => <ListItem>

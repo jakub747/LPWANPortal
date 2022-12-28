@@ -1,7 +1,7 @@
 body {
     //base colors
-    --base: rgba(255, 255, 255, 1);
-    --elevated: rgb(244, 244, 247);
+    --base: #020d14;
+    --elevated: #082539;
     --lighten: rgba(255, 255, 255, 0.1);
     --darken: rgba(0, 0, 0, 0.1);
 
@@ -17,15 +17,15 @@ body {
     --yellow: #facb00;
 
     //accent colors
-    --accent: rgba(0, 0, 0, 1);
+    --accent: #d39e6f;
     --base_accent: rgba(0, 0, 0, 0.25);
     --elevated_accent: rgba(0, 0, 0, 0.25);
 
     //text colors
-    --text_primary: rgba(0, 0, 0, 1);
-    --text_secondary: rgba(29, 29, 29, 1);
-    --text_tertiary: rgba(89, 89, 89, 1);
-    --text_quaternary: rgba(159, 159, 159, 1);
+    --text_primary: rgba(220, 220, 220, 1);
+    --text_secondary: rgba(160, 160, 160, 1);
+    --text_tertiary: rgba(140, 140, 140, 1);
+    --text_quaternary: rgba(100, 100, 100, 1);
 
     //specific colors
     --border: rgba(0, 0, 0, 0.075);

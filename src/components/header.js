@@ -10,23 +10,25 @@ import CustomIcon from './icon';
 function Header({ user, toggleMenu, withoutAccount }) {
 
     return <header>
-        <section>
-            <CustomIcon onClick={window?.toggleMenu} name={`mdiMenu`} /* onClick={() => toggleMenu()}  */ />
-        </section>
-        <section>
-            <a className='logo invisible_link' href='/'>
-                <SvgIcon name={`mdiShareVariantOutline`} />
-                <div>
-                    <label>resNET</label>
-                    <p>Připoj to!</p>
-                </div>
-            </a>
-        </section>
-        <section>
-            {!withoutAccount && <a href={user ? 'profile' : 'login'} className='invisible_link'>
-                <CustomIcon name={`mdiAccount`} />
-            </a>}
-        </section>
+        <div className='content'>
+            <section>
+                <CustomIcon onClick={window?.toggleMenu} name={`mdiMenu`} /* onClick={() => toggleMenu()}  */ />
+            </section>
+            <section>
+                <a className='logo invisible_link' href='/'>
+                    <SvgIcon name={`mdiShareVariantOutline`} />
+                    <div>
+                        <label>resNET</label>
+                        <p>Připoj to!</p>
+                    </div>
+                </a>
+            </section>
+            <section>
+                {!withoutAccount && <a href={user ? 'profile' : 'login'} className='invisible_link'>
+                    <CustomIcon name={`mdiAccount`} />
+                </a>}
+            </section>
+        </div>
     </header>
 }
 

@@ -6,22 +6,24 @@ import React, { } from 'react';
  * @param {*} param0 
  * @returns 
  */
-export default function Card({ user, title, message, img, className, children, ...rest }) {
+export default function Card({ user, title, message, img, imgalt, className, children, ...rest }) {
 
     const styles = {}
 
-    if (img) styles.background = `url("${img}")`
+    // if (img) styles.background = `url("${img}")`
 
     return <article
         className={`card ${className}`}
         style={styles}
         {...rest}
     >
-        {title && <label>{title}</label>}
-        {message && <p>{message}</p>}
-        {/* {img && <img src={img} />} */}
-        {children}
-        {user && <a href='/card_detail' className='button'>Více</a>}
+        {img && <img src={img} alt={imgalt} />}
+        <div className='card_text'>
+            {title && <label>{title}</label>}
+            {message && <p>{message}</p>}
+            {children}
+            {user && <a href='/card_detail' className='button'>Více</a>}
+        </div>
     </article>
 }
 

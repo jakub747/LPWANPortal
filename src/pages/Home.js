@@ -21,17 +21,22 @@ export default function Home(props) {
         <Header user={user} />
         <main>
             <section id="homepage_header" title={`Nabídka LPWAN sítí`}>
-                <section>
-                    <h1>resNET</h1>
-                    <h4>{strings?.motto}</h4>
-                </section>
-                <Searchbar />
+                <img src='https://www.satellitetoday.com/wp-content/uploads/2022/01/IfZTA4VcRyyG7HwdeA5u_VS_120120_DGTL_Tech-2021.jpeg' alt="Page header" />
+                <div>
+                    <section>
+                        <h1>resNET</h1>
+                        <h4>{strings?.motto}</h4>
+                    </section>
+                    <Searchbar />
+                </div>
             </section>
             {!user && <Banner id="signup_banner">
                 <p id="web_description">{strings?.web_description}</p>
-                <p>Ještě nejsi členem?</p>
-                <a className="button" href="/register">Registrovat</a>
-                <a className="button" href="/login">Přihlásit</a>
+                <div className="buttons">
+                    <p>Ještě nejsi členem?</p>
+                    <a className="button" href="/register">Registrovat</a>
+                    <a className="button" href="/login">Přihlásit</a>
+                </div>
             </Banner>}
             {user && <section id="my_devices_banner">
                 <section>
@@ -41,13 +46,13 @@ export default function Home(props) {
                 <a className="button" href="/my_devices">Spravovat</a>
             </section>}
             <HorizontalStack title={`Akce`}>
-                {test_data_actions?.map((item, id) => <Card user={user} title={item.title} message={item.message} />)}
+                {test_data_actions?.map((item, id) => <Card user={user} title={item.title} message={item.message} img={item.img} imgalt={item.imgalt} />)}
             </HorizontalStack>
-            <Banner title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
+            <Banner id="networks_banner" title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
                 <a className="button" href="/networks">Zobrazit nabídku</a>
             </Banner>
             <HorizontalStack title={`Komunita`}>
-                {test_data_community?.map((item, id) => <Card user={user} title={item.title} message={item.message} />)}
+                {test_data_community?.map((item, id) => <Card user={user} title={item.title} message={item.message} img={item.img} imgalt={item.imgalt} />)}
             </HorizontalStack>
         </main>
         <Footer />

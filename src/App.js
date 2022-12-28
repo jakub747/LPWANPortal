@@ -55,11 +55,11 @@ export default function App() {
         <header>
           <SvgIcon onClick={window.toggleMenu} name={`mdiClose`} />
         </header>
-        <a href='/'>Hlevní stránka</a>
+        <a href='/'>Hlavní stránka</a>
         {user && <a href='/profile'>Profil</a>}
         <a href='/networks'>LPWAN Sítě</a>
         {user && <a href='/my_devices'>Moje zařízení</a>}
-        {user && <a href='/community'>Moje zařízení</a>}
+        {user && <a href='/community'>Komunita</a>}
       </nav>
       <div onClick={window.toggleMenu} id='backdrop'></div>
     </>}

@@ -13,5 +13,5 @@
   align-items: center;
   vertical-align: top;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text_primary);
 }
