@@ -6,7 +6,7 @@ import React, { } from 'react';
  * @param {*} param0 
  * @returns 
  */
-export default function Card({ user, title, message, img, imgalt, className, children, ...rest }) {
+export default function Card({ user, id, active, title, message, img, imgalt, className, children, ...rest }) {
 
     const styles = {}
 
@@ -22,7 +22,7 @@ export default function Card({ user, title, message, img, imgalt, className, chi
             {title && <label>{title}</label>}
             {message && <p>{message}</p>}
             {children}
-            {user && <a href='/card_detail' className='button'>Více</a>}
+            {user && active && <a href={`/networks/${id}`} className='button'>Připojit</a>}
         </div>
     </article>
 }

@@ -54,6 +54,7 @@
         border-radius: 0 !important;
         img {
             border-radius: 0 !important;
+            max-height: 160px !important;
         }
     }
     #signup_banner {
@@ -211,7 +212,7 @@ main {
         border-radius: 12px 12px 0 0;
         img {
             border-radius: 12px 12px 0 0;
-            max-height: 500px;
+            max-height: 300px;
             object-fit: cover;
         }
     }
@@ -309,7 +310,7 @@ a:active.invisible_link {
 
     a.button {
         margin: 0;
-        margin-top: 8px;
+        margin-top: auto;
         text-align: center;
         color: var(--text_primary);
         background: var(--accent);
@@ -335,8 +336,8 @@ a:active.invisible_link {
 
     .card {
         margin-left: 16px;
-        height: 200px;
-        min-width: 128px;
+        height: 300px;
+        min-width: 254px;
         justify-content: flex-end;
 
         label {

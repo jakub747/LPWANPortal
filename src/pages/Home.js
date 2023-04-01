@@ -5,6 +5,7 @@ import Card from '../components/card.js'
 import Banner from '../components/banner.js'
 import Searchbar from "../components/searchbar";
 import { test_data_actions } from "../data/actions";
+import { test_data } from "../data/network_data";
 import { test_data_community } from "../data/community";
 import Footer from "../components/footer";
 import { useEffect } from "react";
@@ -45,15 +46,15 @@ export default function Home(props) {
                 </section>
                 <a className="button" href="/my_devices">Spravovat</a>
             </section>}
-            <HorizontalStack title={`Akce`}>
-                {test_data_actions?.map((item, id) => <Card user={user} title={item.title} message={item.message} img={item.img} imgalt={item.imgalt} />)}
+            <HorizontalStack title={`LPWAN sítě`}>
+                {test_data?.map((item, id) => <Card user={user} active={item.active} id={item.id} title={item.name} message={item.desc} img={item.img} imgalt={item.imgalt} />)}
             </HorizontalStack>
-            <Banner id="networks_banner" title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
+            {/* <Banner id="networks_banner" title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
                 <a className="button" href="/networks">Zobrazit nabídku</a>
             </Banner>
             <HorizontalStack title={`Komunita`}>
                 {test_data_community?.map((item, id) => <Card user={user} title={item.title} message={item.message} img={item.img} imgalt={item.imgalt} />)}
-            </HorizontalStack>
+            </HorizontalStack> */}
         </main>
         <Footer />
     </>

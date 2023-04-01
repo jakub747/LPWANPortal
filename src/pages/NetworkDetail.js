@@ -44,11 +44,11 @@ export default function NetworkDetail({ networkID, user }) {
                 </ListItem>)}
             </VerticalStack>
             <section id="order_section">
-                <article className='enhanced_card'>
+                {/* <article className='enhanced_card'>
                     <strong>Instalační balíček</strong>
                     <p>Tento balíček je vhodný pro všechny nové uživatele.</p>
                     <a href={`/install_package`} className='button'>Objednat</a>
-                </article>
+                </article> */}
                 <article>
                     <a href={`/connect/${networkID}`} className='button'>Připojit zařízení</a>
                 </article>

@@ -30,8 +30,8 @@ export default function Login({ loggedIn }) {
                     <button type="submit" className='black-button' onClick={() => submit()}>Přihlásit</button>
                 </form>
                 <hr className='dividing-line' />
-                <button type="button" class="login-with-google-btn">Sign in with Google</button>
-                <button type="button" class="login-with-apple-btn">Sign in with Apple</button>
+                {/* <button type="button" class="login-with-google-btn">Sign in with Google</button>
+                <button type="button" class="login-with-apple-btn">Sign in with Apple</button> */}
                 <p>Ještě nemáte účet?</p>
                 <a href="/register"><button className='black-button'>Registrovat</button></a>
             </section>

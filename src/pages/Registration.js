@@ -34,8 +34,8 @@ export default function Regstration({ loggedIn }) {
                     <button className='black-button' onClick={() => submit()}>Registrovat</button>
                 </form>
                 <hr className='dividing-line' />
-                <button type="button" class="login-with-google-btn">Sign up with Google</button>
-                <button type="button" class="login-with-apple-btn">Sign up with Apple</button>
+                {/* <button type="button" class="login-with-google-btn">Sign up with Google</button>
+                <button type="button" class="login-with-apple-btn">Sign up with Apple</button> */}
                 <p>Již máte účet?</p>
                 <a href='/login'><button className='black-button'>Přihlásit se</button></a>
             </section>

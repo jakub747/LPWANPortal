@@ -48,7 +48,7 @@ export default function ConnectNetwork({ networkID, user }) {
                 <button /* onClick={() => submit()} */>Připojit zařízení</button>
             </form>
             <section id="order_section">
-                <article className='enhanced_card'>
+                {/* <article className='enhanced_card'>
                     <strong>Instalační balíček</strong>
                     <p>Tento balíček je vhodný pro všechny nové uživatele.</p>
                     <a href={`/install_package`} className='button'>Objednat</a>
@@ -60,7 +60,7 @@ export default function ConnectNetwork({ networkID, user }) {
                             <a href={`/documentation`} className='button'>Zobrazit návod</a>
                         </div>
                     </section>
-                </article>
+                </article> */}
             </section>
         </main>
         <Footer />
