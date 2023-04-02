@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Footer from '../components/footer';
 import Header from '../components/header';
 import SvgIcon from '../components/icon';
@@ -12,22 +12,25 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function ConnectNetwork({ networkID, user }) {
+export default function ConnectNetwork({ networkID, api_url, user }) {
 
     const data = test_data.find(x => x?.id == networkID)
 
     const [id, setID] = useState(null)
     const [name, setName] = useState(null)
 
-    // on component mount
-    useEffect(() => {
-        //fetch network details from server
-        //setData()
-    }, [])
+    const submit = useCallback(async () => {
+        if (!api_url) return navigate("/");
+        try {
+            const response = await fetch(`${api_url}/connect`, { method: `POST` });
+            const jsonData = await response.json();
+            //TODO: kontrola kódu
+            navigate("/")
+        } catch (e) {
+            // alert(e)
+        }
 
-    const submit = () => {
-        console.log(id, name)
-    }
+    })
 
     if (!data) return null;
 
@@ -42,10 +45,10 @@ export default function ConnectNetwork({ networkID, user }) {
                     <p>{data.desc}</p>
                 </section>
             </article>
-            <form id='device_connection' action="/add_device.php" method="post">
+            <form id='device_connection' /* action="/add_device.php" method="post" */>
                 <input placeholder='Identifikační číslo zařízení' onChange={(event) => setID(event.target.value)} />
                 <input placeholder='Název zařízení' onChange={(event) => setName(event.target.value)} />
-                <button /* onClick={() => submit()} */>Připojit zařízení</button>
+                <button onClick={() => submit()} >Připojit zařízení</button>
             </form>
             <section id="order_section">
                 {/* <article className='enhanced_card'>

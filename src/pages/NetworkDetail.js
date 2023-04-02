@@ -43,7 +43,7 @@ export default function NetworkDetail({ networkID, user }) {
                     </section>
                 </ListItem>)}
             </VerticalStack>
-            <section id="order_section">
+            {data?.active && <section id="order_section">
                 {/* <article className='enhanced_card'>
                     <strong>Instalační balíček</strong>
                     <p>Tento balíček je vhodný pro všechny nové uživatele.</p>
@@ -52,7 +52,7 @@ export default function NetworkDetail({ networkID, user }) {
                 <article>
                     <a href={`/connect/${networkID}`} className='button'>Připojit zařízení</a>
                 </article>
-            </section>
+            </section>}
         </main>
         <Footer />
     </>

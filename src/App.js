@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import { LocationProvider, Router } from "@reach/router"
 import Networks from './pages/Networks';
+import Devices from './pages/Devices';
 import NetworkDetail from './pages/NetworkDetail';
 import { test_data } from './data/network_data';
 import ConnectNetwork from './pages/ConnectNetwork';
@@ -41,6 +42,7 @@ export default function App() {
 
   let app_data = {
     user: user,
+    api_url: null,
     strings: {
 
       motto: `Připoj to!`,
@@ -58,7 +60,7 @@ export default function App() {
         <a href='/'>Hlavní stránka</a>
         {user && <a href='/profile'>Profil</a>}
         <a href='/networks'>LPWAN Sítě</a>
-        {user && <a href='/my_devices'>Moje zařízení</a>}
+        {user && <a href='/devices'>Moje zařízení</a>}
         {/* {user && <a href='/community'>Komunita</a>} */}
       </nav>
       <div onClick={window.toggleMenu} id='backdrop'></div>
@@ -68,6 +70,7 @@ export default function App() {
       <Login path="login" loggedIn={loggedIn} />
       <Registration path="register" />
       <Networks {...app_data} path='networks' />
+      <Devices {...app_data} path='devices' />
       <NetworkDetail {...app_data} path='networks/:networkID' />
       <ConnectNetwork {...app_data} path='connect/:networkID' />
       <Account {...app_data} path='profile' />

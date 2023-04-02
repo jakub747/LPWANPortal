@@ -8,7 +8,7 @@ import { test_data_actions } from "../data/actions";
 import { test_data } from "../data/network_data";
 import { test_data_community } from "../data/community";
 import Footer from "../components/footer";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
 /**
@@ -16,12 +16,35 @@ import { useEffect } from "react";
  */
 export default function Home(props) {
 
-    const { user, strings } = props;
+    const { user, api_url, strings } = props;
+
+    const [networks, setNetworks] = useState(test_data)
+    const [devices, setDevices] = useState([{ name: `Device 1` }, { name: `Device 2` }, { name: `Device 3` }])
+
+    let getData = useCallback(async () => {
+        if (!api_url) return;
+        try {
+            let resdevices = await fetch(`${api_url}/networks`);
+            let datadevices = await resdevices.json();
+            let resnetworks = await fetch(`${api_url}/networks`);
+            let datanetworks = await resnetworks.json();
+            setDevices(datadevices)
+            setNetworks(datanetworks)
+        } catch (e) {
+            // alert(e)
+        }
+
+    })
+
+    // on component mount
+    useEffect(() => {
+        getData()
+    }, [])
 
     return <>
         <Header user={user} />
         <main>
-            <section id="homepage_header" title={`Nabídka LPWAN sítí`}>
+            <section id="homepage_header" className={!user && "expand"} title={`Nabídka LPWAN sítí`}>
                 <img src='https://www.satellitetoday.com/wp-content/uploads/2022/01/IfZTA4VcRyyG7HwdeA5u_VS_120120_DGTL_Tech-2021.jpeg' alt="Page header" />
                 <div>
                     <section>
@@ -42,12 +65,12 @@ export default function Home(props) {
             {user && <section id="my_devices_banner">
                 <section>
                     <h1>Moje zařízení</h1>
-                    <h5>Zařízení 1, zařízení 2, zařízení 3</h5>
+                    <h5>{devices?.map(x => x.name)?.join(`, `) || `Nemáte žádná zařízení`}</h5>
                 </section>
-                <a className="button" href="/my_devices">Spravovat</a>
+                <a className="button" href="/devices">Spravovat</a>
             </section>}
             <HorizontalStack title={`LPWAN sítě`}>
-                {test_data?.map((item, id) => <Card user={user} active={item.active} id={item.id} title={item.name} message={item.desc} img={item.img} imgalt={item.imgalt} />)}
+                {networks?.map((item, id) => <Card key={id} user={user} active={item.active} id={item.id} title={item.name} message={item.desc} img={item.img} imgalt={item.imgalt} />)}
             </HorizontalStack>
             {/* <Banner id="networks_banner" title={`Nabídka LPWAN sítí`} message={`V naší nabídce najdete množství sítí..`}>
                 <a className="button" href="/networks">Zobrazit nabídku</a>

@@ -134,6 +134,9 @@ body,
     header {
         .logo {
         }
+        .icon {
+            padding: 8px;
+        }
     }
 
     a {
@@ -200,6 +203,10 @@ main {
         margin-right: 16px;
     }
 
+    h3 {
+        margin-top: 32px;
+    }
+
     a.button {
     }
 
@@ -209,15 +216,22 @@ main {
 
     #homepage_header {
         margin-top: 16px;
-        border-radius: 12px 12px 0 0;
+        border-radius: 12px; //12px 0 0;
         img {
             border-radius: 12px 12px 0 0;
             max-height: 300px;
             object-fit: cover;
         }
     }
+
+    #homepage_header.expand {
+        border-radius: 12px 12px 0 0;
+    }
+
+
     #signup_banner {
         border-radius: 0 0 12px 12px;
+        // margin-top: 32px -;
     }
 }
 footer {
@@ -299,11 +313,11 @@ a:active.invisible_link {
         display: flex;
         flex-direction: column;
         padding: 8px;
-        height: 50%;
+        height: 40%;
     }
 
     img {
-        height: 50%;
+        height: 56%;
         border-radius: 12px 12px 0 0;
         object-fit: cover;
     }
@@ -321,7 +335,7 @@ a:active.invisible_link {
 #networks_banner,
 #networks_header,
 #order_section .enhanced_card {
-    background: url("https://www.t-systems.com/resource/blob/268822/35cf5677649cc008defd008b7295d0f5/IM-t-systems-references-connectivity-data.jpg") !important;
+    background: url("https://www.open.edu/openlearn/pluginfile.php/1568585/tool_ocwmanage/image/0/opnl_1_786px.jpg") !important;
     object-fit: cover;
 }
 
@@ -336,8 +350,8 @@ a:active.invisible_link {
 
     .card {
         margin-left: 16px;
-        height: 300px;
-        min-width: 254px;
+        height: 310px;
+        min-width: 310px;
         justify-content: flex-end;
 
         label {
@@ -441,6 +455,7 @@ a:active.invisible_link {
     background: var(--elevated);
     display: flex;
     flex-direction: column;
+    padding-bottom: 8px;
     // position: sticky;
     // top: 48px;
 
@@ -465,7 +480,7 @@ a:active.invisible_link {
     }
 
     .searchbar {
-        margin: auto 16px auto auto !important;
+        margin: 22px 16px auto auto !important;
         flex: none;
         input {
             width: 8em;
@@ -499,8 +514,10 @@ a:active.invisible_link {
     display: flex;
     background: var(--elevated);
     padding-bottom: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    margin-top: 32px;
+    border-radius: 12px;
+    // border-bottom-left-radius: 12px;
+    // border-bottom-right-radius: 12px;
 
     section {
         display: flex;
@@ -518,6 +535,7 @@ a:active.invisible_link {
     a.button {
         margin: auto;
         margin-right: 16px;
+        margin-top: 16px;
     }
 }
 

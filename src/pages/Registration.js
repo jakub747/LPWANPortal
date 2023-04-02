@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-import React, { } from 'react';
+import React, { useCallback } from 'react';
 import Footer from '../components/footer';
 import Header from '../components/header';
 import "../styles/FormStyle.css"
@@ -8,18 +8,25 @@ import "../styles/FormStyle.css"
  * 
  * @returns Regstration page
  */
-export default function Regstration({ loggedIn }) {
+export default function Regstration({ loggedIn, api_url }) {
 
     const logged = () => {
         localStorage.setItem("user", JSON.stringify({ username: `testuser`, name: `Test`, surname: `User` }))
-    }
-
-    const submit = () => {
-        //POST ajax login 
-        logged()
         navigate("/")
     }
 
+    const submit = useCallback(async () => {
+        if (!api_url) return logged(); //test
+        try {
+            const response = await fetch(`${api_url}/register`, { method: `POST` });
+            const jsonData = await response.json();
+            //TODO: kontrola kódu
+            logged()
+        } catch (e) {
+            // alert(e)
+        }
+
+    })
     return <>
         <Header withoutAccount />
         <main>

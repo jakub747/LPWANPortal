@@ -20,7 +20,7 @@ export const test_data = [
         provider: "Sigfox",
         price: 200,
         currency: `CZK`,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREMqlFw0W3lwTS6TDwvY8Emx4yCLX6v-bOnA&usqp=CAU",
+        img: "https://uploads-ssl.webflow.com/6201c72eaefe392244240f98/62d6c5a98ab439891870e17c_istockphoto-1305068251-170667a.jpeg",
         active: true,
         coverage: [
             { location: `Doma`, percentage: Math.random() * 100 },
@@ -60,20 +60,8 @@ export const test_data = [
         provider: "Various telecommunications companies",
         price: 89,
         currency: `CZK`,
-        img: "https://uploads-ssl.webflow.com/6201c72eaefe392244240f98/62d6c5a98ab439891870e17c_istockphoto-1305068251-170667a.jpeg",
-        coverage: [
-            { location: `Doma`, percentage: Math.random() * 100 },
-            { location: `Chata`, percentage: Math.random() * 100 }
-        ]
-    },
-    {
-        id: 6,
-        name: "Ingenu RPMA",
-        desc: "A proprietary wireless protocol designed for low power, wide area networking (LPWAN)",
-        provider: "Ingenu",
-        price: 124,
-        currency: `CZK`,
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREMqlFw0W3lwTS6TDwvY8Emx4yCLX6v-bOnA&usqp=CAU",
+
         coverage: [
             { location: `Doma`, percentage: Math.random() * 100 },
             { location: `Chata`, percentage: Math.random() * 100 }

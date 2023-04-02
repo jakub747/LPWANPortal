@@ -12,8 +12,9 @@ export default function Card({ user, id, active, title, message, img, imgalt, cl
 
     // if (img) styles.background = `url("${img}")`
 
-    return <article
-        className={`card ${className}`}
+    return <a
+        href={`/networks/${id}`}
+        className={`card invisible_link ${className}`}
         style={styles}
         {...rest}
     >
@@ -22,8 +23,8 @@ export default function Card({ user, id, active, title, message, img, imgalt, cl
             {title && <label>{title}</label>}
             {message && <p>{message}</p>}
             {children}
-            {user && active && <a href={`/networks/${id}`} className='button'>Připojit</a>}
+            {user && active && <a href={`/connect/${id}`} className='button'>Připojit</a>}
         </div>
-    </article>
+    </a>
 }
 
