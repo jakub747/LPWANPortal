@@ -4,16 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>LPWAN portál</title>
+        <style>
+            body {
+                padding: 1em 5em;
+                font-family: Verdana, sans-serif;
+            }
+        </style>
     </head>
     <body>
-        <h1>
-            <a href="http://www.kodix.cz" target="_blank">www.kodix.cz</a>
-        </h1>
-        <p>
-            Projekt jsme umístili mimo školní server, protože stávající nastavení serveru pravděpodobně nepodporuje
-            single-page řešení, které jsme využili. Konkrétně jsme stavěli front-end na React framework.
-            Pravděpodobně bychom potřebovali konfigurovat htaccess, aby se vždy při průchodu aplikací vracel na
-            stránku index.html.
-        </p>
+        <header style="border-bottom-style: dotted">
+            <h1>Semestrální projekt z Client-side & Server-side</h1>
+            <p>
+                Projekt jsme umístili mimo školní server, protože aktuální nastavení tohoto serveru pravděpodobně
+                nepodporuje single-page řešení, které jsme použili. Pro single-page řešení jsme použili technologii
+                React. Byla snaha upravit htaccess, ale nepodařilo se najít konfiguraci, která by zprovoznila naši
+                aplikaci. Zvolili jsme náhradní řešení v podobě externího hostingu u WebGlobe a Azure. Na WebGlobe
+                hostujeme front-end aplikaci a v Azure provozujeme databázi Postgres a back-end na platformě .NET Core.
+            </p>
+        </header>
+        <section id="frontend" style="border-bottom-style: dotted">
+            <h2>Front-End: <a href="http://www.kodix.cz" target="_blank">kodix.cz</a></h2>
+            <h3>Zdrojový kód: <a href="https://github.com/jakub747/LPWANPortal" target="_blank">GitHub</a> </h3>
+        </section>
+        <section id="backend" style="border-bottom-style: dotted">
+            <h2>Back-End: <a href="https://lpwanapi.azurewebsites.net/swagger/index.html" target="_blank">LPWAN API</a></h2>
+            <h3>Zdrojový kód: <a href="https://github.com/lherynek/Lpwan" target="_blank">GitHub</a></h3>
+        </section>
     </body>
 </html>
