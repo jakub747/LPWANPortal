@@ -13,19 +13,37 @@ import NotFound from './pages/NotFound';
 import Account from './pages/Account';
 import SvgIcon from './components/icon';
 import DeviceDetail from './pages/DeviceDetail';
+import Cookies from 'js-cookie';
 
-let storageGetUser = () => {
+// let storageGetUser = () => {
+//   try {
+//     return JSON.parse(localStorage.getItem("user"))
+//   } catch (e) {
+//     return null;
+//   }
+// }
+
+function setCookie(name, val, options = { expires: 7, secure: true }) {
+  Cookies.set(name, JSON.stringify(val), options);
+}
+
+function getCookie(name) {
+  let val = Cookies.get(name) || null;
   try {
-    return JSON.parse(localStorage.getItem("user"))
-  } catch (e) {
-    return null;
-  }
+    val = JSON.parse(val)
+  } catch (e) { }
+  console.log({ name, val })
+  return val;
+}
+
+function removeCookie(name) {
+  Cookies.remove(name)
 }
 
 export default function App() {
 
   //state hooks
-  const [user, setUser] = useState(storageGetUser()) //user object
+  const [user, setUser] = useState(getCookie(`user`)) //user object
   const [menu, setMenu] = useState(false)
 
   window.toggleMenu = () => setMenu(!menu);
@@ -35,6 +53,7 @@ export default function App() {
    * @param {*} user 
    */
   const loggedIn = (user) => {
+    setCookie(`user`, user)
     setUser(user)
   }
 
@@ -43,7 +62,7 @@ export default function App() {
       let fetchparams = {
         method: method,
         mode: "cors",
-        cache: "no-cache",
+        // cache: "no-cache",
         // credentials: "include",
         headers: {
           "Accept": "application/json",
@@ -53,6 +72,7 @@ export default function App() {
           // "Access-Control-Expose-Header": "X-Server-Started, ETag",
         },
       }
+      if (user?.token) fetchparams.headers.Authorization = `Bearer ${user?.token}`;
       if (body) fetchparams.body = JSON.stringify(body)
       const response = await fetch(`${app_data?.api_url}${url}`, fetchparams);
       console.log({ response })
@@ -84,6 +104,9 @@ export default function App() {
 
     },
     REST,
+    getCookie,
+    setCookie,
+    removeCookie
   }
 
   return <LocationProvider>

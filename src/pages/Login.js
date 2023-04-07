@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { navigate } from '@reach/router';
 import React, { useCallback } from 'react';
 import Header from '../components/header';
@@ -22,10 +23,7 @@ export default function Login({ loggedIn, REST, api_url }) {
             surname: result?.surname,
             token: result.token
         }
-        localStorage.setItem("user", JSON.stringify(user))
         loggedIn(user)
-        // navigate("/")
-        // eslint-disable-next-line no-restricted-globals
         location.replace("/")
     }
 
