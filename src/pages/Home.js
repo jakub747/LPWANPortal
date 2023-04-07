@@ -16,20 +16,18 @@ import { useCallback, useEffect, useState } from "react";
  */
 export default function Home(props) {
 
-    const { user, api_url, strings } = props;
+    const { user, REST, api_url, strings } = props;
 
     const [networks, setNetworks] = useState(test_data)
-    const [devices, setDevices] = useState([{ name: `Device 1` }, { name: `Device 2` }, { name: `Device 3` }])
+    const [devices, setDevices] = useState()
 
     let getData = useCallback(async () => {
         if (!api_url) return;
         try {
-            let resdevices = await fetch(`${api_url}/networks`);
-            let datadevices = await resdevices.json();
-            let resnetworks = await fetch(`${api_url}/networks`);
-            let datanetworks = await resnetworks.json();
-            setDevices(datadevices)
-            setNetworks(datanetworks)
+            const [resdevices, datadevices] = await REST(`GET`, `/Device/All`)
+            // const [resnetworks, datanetworks] = await REST(`GET`, `/networks`)
+            if (resdevices) setDevices(datadevices)
+            // setNetworks(datanetworks)
         } catch (e) {
             // alert(e)
         }

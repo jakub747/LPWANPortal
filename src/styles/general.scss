@@ -228,7 +228,6 @@ main {
         border-radius: 12px 12px 0 0;
     }
 
-
     #signup_banner {
         border-radius: 0 0 12px 12px;
         // margin-top: 32px -;
@@ -284,6 +283,16 @@ a.button {
     padding: 4px 8px;
     color: var(--base);
     background: var(--accent) !important;
+}
+
+.button {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--accent) !important;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text_primary);
+    background: var(--accent);
 }
 
 a:link.button,
@@ -638,14 +647,9 @@ a:active.invisible_link {
     }
 }
 
-#device_connection {
-    #order_section {
-        // background: var(--elevated);
-    }
-}
 
-form#device_connection {
-    margin: 44px 16px 44px 16px;
+#device_connection {
+    margin: 16px 16px 44px 16px;
     display: flex;
     flex-direction: column;
 
@@ -658,9 +662,28 @@ form#device_connection {
         font-size: 18px;
     }
 
+    label {
+        margin-top: 16px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
     input,
     button {
         margin-top: 12px;
+    }
+
+    button {
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--accent) !important;
+        padding: 8px;
+        font-size: 18px;
+        color: var(--base);
+    }
+
+    button:first-of-type {
+        margin-top: 32px;
     }
 }
 
@@ -672,5 +695,20 @@ form {
         padding: 8px;
         font-size: 18px;
         color: var(--base);
+    }
+}
+
+.delete_button {
+    margin: auto !important;
+    margin-right: 0px !important;
+    padding: 8px;
+    cursor: pointer;
+}
+
+form {
+    label {
+        margin-top: 16px;
+        font-size: 18px;
+        font-weight: bold;
     }
 }

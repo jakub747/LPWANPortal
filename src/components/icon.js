@@ -8,7 +8,7 @@ import * as MaterialDesignIcons from '@mdi/js';
  * @param {*} param0 
  * @returns 
  */
-export default function SvgIcon({ name, ...rest }) {
+export default function SvgIcon({ name, className, ...rest }) {
 
     const getIcon = (icon_name) => {
         try {
@@ -22,5 +22,5 @@ export default function SvgIcon({ name, ...rest }) {
 
     if (!icon) return null;
 
-    return <Icon className={`icon`} path={icon} {...rest} />
+    return <Icon className={`icon ${className}`} path={icon} {...rest} />
 }

@@ -12,6 +12,7 @@ import ConnectNetwork from './pages/ConnectNetwork';
 import NotFound from './pages/NotFound';
 import Account from './pages/Account';
 import SvgIcon from './components/icon';
+import DeviceDetail from './pages/DeviceDetail';
 
 let storageGetUser = () => {
   try {
@@ -37,18 +38,52 @@ export default function App() {
     setUser(user)
   }
 
+  const REST = async (method, url, body) => {
+    try {
+      let fetchparams = {
+        method: method,
+        mode: "cors",
+        cache: "no-cache",
+        // credentials: "include",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Content-Encoding": "application/json",
+          // "Access-Control-Allow-Headers": "X-Server-Started, ETag",
+          // "Access-Control-Expose-Header": "X-Server-Started, ETag",
+        },
+      }
+      if (body) fetchparams.body = JSON.stringify(body)
+      const response = await fetch(`${app_data?.api_url}${url}`, fetchparams);
+      console.log({ response })
+      if (response?.status === 200) {
+        try {
+          const jsonData = await response.json();
+          console.log({ jsonData })
+          return [true, jsonData]
+        } catch (e) {
+          return [true]
+        }
+      }
+      return [false]
+    }
+    catch (e) {
+      return [false]
+    }
+  }
+
   //rendering login page
   // if (!user) return <Login loggedIn={loggedIn} />
 
   let app_data = {
     user: user,
-    api_url: null,
+    api_url: `https://lpwanapiv3.azurewebsites.net`,
     strings: {
-
       motto: `Připoj to!`,
       web_description: `Naše stránka je určena pro zákazníky, kteří hledají spolehlivé a výkonné připojení pro svá IoT zařízení. Na stránkách naleznete informace o různých typech LPWAN sítí, jako je například LoRaWAN nebo Sigfox, a o možnostech připojení, které poskytovatel nabízí. K dispozici jsou také podrobné popisy jednotlivých tarifů a ceníky. Pro zákazníky je připraven také sekce s často kladenými otázkami a kontaktními údaji pro získání dalších informací nebo pomoci s nastavením připojení.`
 
     },
+    REST,
   }
 
   return <LocationProvider>
@@ -67,10 +102,11 @@ export default function App() {
     </>}
     <Router id='router'>
       <Home {...app_data} path='/' />
-      <Login path="login" loggedIn={loggedIn} />
-      <Registration path="register" />
+      <Login path="/login/" loggedIn={loggedIn} {...app_data} />
+      <Registration path="register" {...app_data} />
       <Networks {...app_data} path='networks' />
       <Devices {...app_data} path='devices' />
+      <DeviceDetail {...app_data} path='devices/:deviceID' />
       <NetworkDetail {...app_data} path='networks/:networkID' />
       <ConnectNetwork {...app_data} path='connect/:networkID' />
       <Account {...app_data} path='profile' />

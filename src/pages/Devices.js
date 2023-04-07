@@ -12,22 +12,35 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function Devices({ networkID, api_url, user }) {
+export default function Devices({ api_url, user }) {
 
     const [data, setData] = useState([])
 
     let getData = useCallback(async () => {
         if (!api_url) return;
         try {
-            const response = await fetch(`${api_url}/devices`);
+            const response = await fetch(`${api_url}/Device/All`);
             const jsonData = await response.json();
-             //TODO: kontrola kódu
+            //TODO: kontrola kódu
             setData(jsonData)
         } catch (e) {
             // alert(e)
         }
 
     })
+
+    // let deleteDevice = useCallback(async () => {
+    //     if (!api_url) return;
+    //     try {
+    //         const response = await fetch(`${api_url}/Device`, { method: `DELETE` });
+    //         const jsonData = await response.json();
+    //         //TODO: kontrola kódu
+    //         setData(jsonData)
+    //     } catch (e) {
+    //         // alert(e)
+    //     }
+
+    // })
 
     // on component mount
     useEffect(() => {
@@ -44,11 +57,12 @@ export default function Devices({ networkID, api_url, user }) {
             <VerticalStack>
                 {data.map((item, id) => <ListItem>
                     <a className='invisible_link' href={`/devices/${item.id}`}>
-                        <SvgIcon name={`mdiSignal`} />
+                        {/* <SvgIcon name={`mdiSignal`} /> */}
                         <section>
-                            <div><label>{item.name}</label><small>{item.provider}</small></div>
-                            <div><small>{item.desc}</small><strong>{item.currency || `$`}{item?.price}</strong></div>
+                            <div><label>{item.name}</label><small>{/* {item.provider} */}</small></div>
+                            <div><small>{item.description}</small><strong>{/* {item.currency || `$`}{item?.price} */}</strong></div>
                         </section>
+                        {/* <SvgIcon name={`mdiTrashCan`} className={`delete_button`}  onClick={deleteDevice}  /> */}
                     </a>
                 </ListItem>)}
             </VerticalStack>
