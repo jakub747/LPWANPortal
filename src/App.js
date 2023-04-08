@@ -155,7 +155,8 @@ export default function App() {
     getCookie,
     setCookie,
     remCookie,
-    loggedOut
+    loggedOut,
+    loggedIn
   }
 
   return <LocationProvider>
@@ -174,7 +175,7 @@ export default function App() {
     </>}
     <Router id='router'>
       <Home {...app_data} path='/' />
-      <Login path="/login/" loggedIn={loggedIn} {...app_data} />
+      <Login path="/login/" {...app_data} />
       <Registration path="register" {...app_data} />
       <Networks {...app_data} path='networks' />
       <Devices {...app_data} path='devices' />
