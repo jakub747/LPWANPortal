@@ -14,50 +14,96 @@ import Account from './pages/Account';
 import SvgIcon from './components/icon';
 import DeviceDetail from './pages/DeviceDetail';
 import Cookies from 'js-cookie';
+import { useEffect } from 'react';
 
-// let storageGetUser = () => {
-//   try {
-//     return JSON.parse(localStorage.getItem("user"))
-//   } catch (e) {
-//     return null;
-//   }
+let storageGetUser = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user"))
+  } catch (e) {
+    return null;
+  }
+}
+
+// function setCookie(name, val, options = { expires: 7, secure: true }) {
+//   Cookies.set(name, JSON.stringify(val), options);
 // }
 
-function setCookie(name, val, options = { expires: 7, secure: true }) {
-  Cookies.set(name, JSON.stringify(val), options);
+// function getCookie(name) {
+//   let val = Cookies.get(name) || null;
+//   try {
+//     val = JSON.parse(val)
+//   } catch (e) { }
+//   console.log({ name, val })
+//   return val;
+// }
+
+function setCookie(name, value, days = 7) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 function getCookie(name) {
-  let val = Cookies.get(name) || null;
-  try {
-    val = JSON.parse(val)
-  } catch (e) { }
-  console.log({ name, val })
-  return val;
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
 }
 
-function removeCookie(name) {
-  Cookies.remove(name)
+function remCookie(name) {
+  setCookie(name, "", -1);
 }
+
+
+// function removeCookie(name) {
+//   Cookies.remove(name)
+// }
 
 export default function App() {
 
   //state hooks
-  const [user, setUser] = useState(getCookie(`user`)) //user object
+  const token = getCookie(`token`)
+  const [user, setUser] = useState(token ? storageGetUser() : null) //user object
   const [menu, setMenu] = useState(false)
 
   window.toggleMenu = () => setMenu(!menu);
+
+  const getUser = async () => {
+    const [success, result] = await REST(`GET`, `/Account`)
+    if (success) loggedIn(result)
+  }
+
+  useEffect(() => {
+    if (!user) getUser()
+  }, [])
 
   /**
    * Callback after user successfuly logged/registered
    * @param {*} user 
    */
   const loggedIn = (user) => {
-    setCookie(`user`, user)
+    setCookie(`token`, user?.token)
+    let newuser = { ...user }
+    delete newuser?.token
+    localStorage.setItem(`user`, JSON.stringify(newuser))
     setUser(user)
   }
 
-  const REST = async (method, url, body) => {
+  const loggedOut = () => {
+    remCookie(`token`)
+    localStorage.removeItem(`user`)
+    setUser(null)
+  }
+
+  const REST = async (method, url, body, proceedWithoutToken) => {
     try {
       let fetchparams = {
         method: method,
@@ -72,7 +118,9 @@ export default function App() {
           // "Access-Control-Expose-Header": "X-Server-Started, ETag",
         },
       }
-      if (user?.token) fetchparams.headers.Authorization = `Bearer ${user?.token}`;
+
+      if (!proceedWithoutToken && !token) return;
+      if (token) fetchparams.headers.Authorization = `Bearer ${token}`;
       if (body) fetchparams.body = JSON.stringify(body)
       const response = await fetch(`${app_data?.api_url}${url}`, fetchparams);
       console.log({ response })
@@ -106,7 +154,8 @@ export default function App() {
     REST,
     getCookie,
     setCookie,
-    removeCookie
+    remCookie,
+    loggedOut
   }
 
   return <LocationProvider>

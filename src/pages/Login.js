@@ -30,7 +30,7 @@ export default function Login({ loggedIn, REST, api_url }) {
     const submit = async () => {
         if (!api_url) return navigate("/"); //test
         try {
-            const [success, result] = await REST(`POST`, `/Account/login`, { email, password })
+            const [success, result] = await REST(`POST`, `/Account/login`, { email, password }, true)
             if (success) logged(result)
         } catch (e) {
             alert(e)
