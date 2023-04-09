@@ -10,7 +10,7 @@ import { useEffect } from 'react';
  * 
  * @returns Login page
  */
-export default function Login({ loggedIn, REST, api_url }) {
+export default function Login({ loggedIn, REST, messageError, messageSuccess }) {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
@@ -27,13 +27,30 @@ export default function Login({ loggedIn, REST, api_url }) {
         location.replace("/")
     }
 
+    const validate = () => {
+
+        if (!email || !password) {
+            messageError('Obě pole musí být vyplněna');
+            return false;
+        }
+
+        const passwordRegex = /(?=.*[a-z])(?=.*[A-Z])(?=.{8,})\S+$/;
+        if (!passwordRegex.test(password)) {
+            messageError('Heslo musí obsahovat alespoň jedno velké písmeno, jedno malé písmeno a musí být dlouhé alespoň 8 znaků.');
+            return false;
+        }
+        return true;
+    }
+
     const submit = async () => {
-        if (!api_url) return navigate("/"); //test
+        if (!validate()) return;
         try {
             const [success, result] = await REST(`POST`, `/Account/login`, { email, password }, true)
-            if (success) logged(result)
+            if (!success) return messageError(`Přihlášení se nezdařilo`)
+            logged(result)
+            // messageSuccess(``)
         } catch (e) {
-            alert(e)
+            messageError(`Přihlášení se nezdařilo`)
         }
     }
 
@@ -47,8 +64,8 @@ export default function Login({ loggedIn, REST, api_url }) {
             <section className='content-box'>
                 <h1>Přihlášení</h1>
                 <section /* action="login.php" method="post" */>
-                    <input type="text" placeholder="Email" className="input-box" onChange={(event) => setEmail(event.target.value)} />
-                    <input type="password" placeholder="Heslo" className="input-box" onChange={(event) => setPassword(event.target.value)} />
+                    <input type="text" placeholder="*Email" className="input-box" onChange={(event) => setEmail(event.target.value)} />
+                    <input type="password" placeholder="*Heslo" className="input-box" onChange={(event) => setPassword(event.target.value)} />
                     <button /* type="submit" */ className='black-button' onClick={() => submit()}>Přihlásit</button>
                 </section>
                 <hr className='dividing-line' />

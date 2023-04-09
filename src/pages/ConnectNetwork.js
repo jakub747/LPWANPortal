@@ -13,7 +13,7 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function ConnectNetwork({ networkID, REST, api_url, user }) {
+export default function ConnectNetwork({ networkID, REST, messageError, messageSuccess, user }) {
 
     const data = test_data.find(x => x?.id == networkID)
 
@@ -24,10 +24,19 @@ export default function ConnectNetwork({ networkID, REST, api_url, user }) {
     const [zip, setZip] = useState(null)
     const [city, setCity] = useState(null)
     const [country, setCountry] = useState(null)
-    const [result, setResult] = useState(null)
+    const [result, setResult] = useState(true)
+
+    const validate = () => {
+        if (!id || !name || !street || !zip || !city || !country) {
+            messageError('Vyplňte povinná pole s hvězdičkou');
+            // setResult(false)
+            return false;
+        }
+        return true;
+    }
 
     const submit = useCallback(async () => {
-        if (!api_url) return navigate("/");
+        if (!validate()) return;
         try {
             let body = {
                 name,
@@ -46,17 +55,24 @@ export default function ConnectNetwork({ networkID, REST, api_url, user }) {
                 }
             }
             const [success, result] = await REST(`POST`, `/Device`, body)
+            if(!success) return messageError(`Nepodařilo se načíst data`)
             console.log({ success, result, body })
-            setResult(success)
+            location.replace("/")
+            messageSuccess('Zařízení připojeno');
         } catch (e) {
             setResult(false)
         }
 
     })
 
-    useEffect(() => {
-        if (result) location.replace("/")
-    }, [result])
+    const inputClass = (param) => {
+        if ((!param || param === "") && !result) return "unfilled"
+        return ""
+    }
+
+    // useEffect(() => {
+    //     if (result) location.replace("/")
+    // }, [result])
 
     if (!data) return null;
 
@@ -73,15 +89,15 @@ export default function ConnectNetwork({ networkID, REST, api_url, user }) {
             </article>
             <section id='device_connection' /* action="/add_device.php" method="post" */>
                 <label>Zařízení</label>
-                <input placeholder='Identifikační číslo' onChange={(event) => setID(event.target.value)} />
-                <input placeholder='Název' onChange={(event) => setName(event.target.value)} />
+                <input className={inputClass(id)} placeholder='*Identifikační číslo' onChange={(event) => setID(event.target.value)} />
+                <input className={inputClass(name)} placeholder='*Název' onChange={(event) => setName(event.target.value)} />
                 <input placeholder='Popis' onChange={(event) => setDesc(event.target.value)} />
 
                 <label>Adresa</label>
-                <input placeholder='Ulice a č.p.' onChange={(event) => setStreet(event.target.value)} />
-                <input placeholder='PSČ' onChange={(event) => setZip(event.target.value)} />
-                <input placeholder='Město' onChange={(event) => setCity(event.target.value)} />
-                <input placeholder='Země' onChange={(event) => setCountry(event.target.value)} />
+                <input className={inputClass(street)} placeholder='*Ulice a č.p.' onChange={(event) => setStreet(event.target.value)} />
+                <input className={inputClass(zip)} placeholder='*PSČ' onChange={(event) => setZip(event.target.value)} />
+                <input className={inputClass(city)} placeholder='*Město' onChange={(event) => setCity(event.target.value)} />
+                <input className={inputClass(country)} placeholder='*Země' onChange={(event) => setCountry(event.target.value)} />
 
                 <button className='button' onClick={() => submit()} >Připojit zařízení</button>
             </section>

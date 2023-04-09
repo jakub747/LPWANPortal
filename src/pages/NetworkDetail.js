@@ -28,11 +28,12 @@ export default function NetworkDetail({ networkID, user }) {
         <Header user={user} />
         <main>
             <h1>{data?.name}</h1>
-            <VerticalStack>
+            <p>{data?.desc}</p>
+            {/* <VerticalStack>
                 <strong>{data.currency || `$`}{data?.price}</strong>
-                <p>{data?.desc}</p>
-            </VerticalStack>
-            <VerticalStack title={`Pokrytí`}>
+
+            </VerticalStack> */}
+            {/* <VerticalStack title={`Pokrytí`}>
                 {data?.coverage?.map((item, id) => <ListItem key={id}>
                     <SvgIcon name={`mdiMapMarker`} />
                     <section>
@@ -42,7 +43,7 @@ export default function NetworkDetail({ networkID, user }) {
                         </div>
                     </section>
                 </ListItem>)}
-            </VerticalStack>
+            </VerticalStack> */}
             {data?.active && <section id="order_section">
                 {/* <article className='enhanced_card'>
                     <strong>Instalační balíček</strong>
@@ -50,7 +51,7 @@ export default function NetworkDetail({ networkID, user }) {
                     <a href={`/install_package`} className='button'>Objednat</a>
                 </article> */}
                 <article>
-                    <a href={`/connect/${networkID}`} className='button'>Připojit zařízení</a>
+                    {user && data?.active && <a href={`/connect/${networkID}`} className='button'>Připojit zařízení</a>}
                 </article>
             </section>}
         </main>

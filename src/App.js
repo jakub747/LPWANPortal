@@ -73,12 +73,20 @@ export default function App() {
   const token = getCookie(`token`)
   const [user, setUser] = useState(token ? storageGetUser() : null) //user object
   const [menu, setMenu] = useState(false)
+  const [toastData, setToastData] = useState(null)
+
+  const messageError = (error, timeout) => setToastData({ error, timeout })
+  const messageSuccess = (success, timeout) => setToastData({ success, timeout })
+
+  window.messageError = messageError;
+  window.messageSuccess = messageSuccess;
 
   window.toggleMenu = () => setMenu(!menu);
 
   const getUser = async () => {
     const [success, result] = await REST(`GET`, `/Account`)
-    if (success) loggedIn(result)
+    if (!success) return messageError(`Nepodařilo se načíst uživatele`)
+    loggedIn(result)
   }
 
   useEffect(() => {
@@ -156,8 +164,33 @@ export default function App() {
     setCookie,
     remCookie,
     loggedOut,
-    loggedIn
+    loggedIn,
+    messageError,
+    messageSuccess
   }
+
+  const Toast = ({ data, hide }) => {
+    const { error, success, timeout } = data || {};
+
+    useEffect(() => {
+      const to = setTimeout(() => {
+        hide(false);
+      }, timeout || 2000);
+
+      return () => clearTimeout(to)
+    }, [data]);
+
+    const toastClass = success
+      ? 'toast toast-success'
+      : error
+        ? 'toast toast-error'
+        : 'toast';
+
+
+    return <div className={`${toastClass} ${data ? 'visible' : ''}`}>
+      {error || success || ``}
+    </div>
+  };
 
   return <LocationProvider>
     {menu && <>
@@ -173,6 +206,7 @@ export default function App() {
       </nav>
       <div onClick={window.toggleMenu} id='backdrop'></div>
     </>}
+    <Toast data={toastData} hide={setToastData} />
     <Router id='router'>
       <Home {...app_data} path='/' />
       <Login path="/login/" {...app_data} />

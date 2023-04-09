@@ -13,6 +13,7 @@ export default function Account({ networkID, loggedOut, user }) {
         <Header user={user} />
         <main>
             <h1>{user?.name} {user?.surname}</h1>
+            <p>{user?.email}</p>
             <a href='/' onClick={() => { loggedOut() }} className='button'>Odhlásit</a>
         </main>
         <Footer />

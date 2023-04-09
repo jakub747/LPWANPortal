@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { navigate } from '@reach/router';
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/footer';
@@ -13,14 +14,15 @@ import { useCallback } from 'react';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function DeviceDetail({ deviceID, REST, user }) {
+export default function DeviceDetail({ deviceID, REST, messageSuccess, messageError, user }) {
 
     const [data, setData] = useState(test_data)
 
     let getData = useCallback(async () => {
         try {
             const [success, result] = await REST(`GET`, `/Device/${deviceID}`)
-            if (success) setData(result)
+            if (!success) return messageError(`Nepodařilo se načíst data`)
+            setData(result)
         } catch (e) {
             // alert(e)
         }
@@ -30,8 +32,9 @@ export default function DeviceDetail({ deviceID, REST, user }) {
     let deleteDevice = useCallback(async () => {
         try {
             const [success, result] = await REST(`DELETE`, `/Device/${deviceID}`)
-            // eslint-disable-next-line no-restricted-globals
-            if (success) location.replace("/")
+            if (!success) return messageError(`Zařízení se nepodařilo smazat`)
+            location.replace("/")
+            messageSuccess(``)
         } catch (e) {
             // alert(e)
         }

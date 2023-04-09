@@ -17,7 +17,6 @@ export default function Networks({ networkID, api_url, user }) {
     const [data, setData] = useState(test_data)
 
     let getData = useCallback(async () => {
-        if (!api_url) return;
         try {
             const response = await fetch(`${api_url}/networks`);
             const jsonData = await response.json();
@@ -44,10 +43,10 @@ export default function Networks({ networkID, api_url, user }) {
             <VerticalStack>
                 {data?.map((item, id) => <ListItem>
                     <a className='invisible_link' href={`/networks/${item.id}`}>
-                        <SvgIcon name={`mdiSignal`} />
+                        {/* <SvgIcon name={`mdiSignal`} /> */}
                         <section>
                             <div><label>{item.name}</label><small>{item.provider}</small></div>
-                            <div><small>{item.desc}</small><strong>{item.currency || `$`}{item?.price}</strong></div>
+                            <div><small>{item.desc}</small><strong>{/* {item.currency || `$`}{item?.price} */}</strong></div>
                         </section>
                     </a>
                 </ListItem>)}

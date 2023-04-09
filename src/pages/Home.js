@@ -16,17 +16,17 @@ import { useCallback, useEffect, useState } from "react";
  */
 export default function Home(props) {
 
-    const { user, REST, api_url, strings } = props;
+    const { user, REST, messageError, strings } = props;
 
     const [networks, setNetworks] = useState(test_data)
     const [devices, setDevices] = useState()
 
     let getData = useCallback(async () => {
-        if (!api_url) return;
         try {
             const [resdevices, datadevices] = await REST(`GET`, `/Device/All`)
             // const [resnetworks, datanetworks] = await REST(`GET`, `/networks`)
             if (resdevices) setDevices(datadevices)
+            else messageError(`Nepodařilo se načíst data`)
             // setNetworks(datanetworks)
         } catch (e) {
             // alert(e)

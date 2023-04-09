@@ -12,15 +12,15 @@ import { test_data } from '../data/network_data';
  * Page displaying a list of LPWAN networks
  * @returns 
  */
-export default function Devices({ api_url, REST, user }) {
+export default function Devices({ messageError, REST, user }) {
 
     const [data, setData] = useState([])
 
     let getData = useCallback(async () => {
-        if (!api_url) return;
         try {
             const [resdevices, datadevices] = await REST(`GET`, `/Device/All`)
-            if (resdevices) setData(datadevices)
+            if (!resdevices) return messageError(`Nepodařilo se načíst data`)
+            setData(datadevices)
         } catch (e) {
             // alert(e)
         }
